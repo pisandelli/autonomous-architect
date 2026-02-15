@@ -5,7 +5,8 @@ import { useProductStore } from './store-dna'; // Importing the store to test
 // Mocking the API Layer (Dependency Injection/Isolation)
 const mockGetByCategory = vi.fn();
 
-vi.mock('~/app/api/ProductModule', () => ({
+// Use Alias for mocking if possible, or matches the import in component
+vi.mock('@api/ProductModule', () => ({
   ProductModule: {
     getByCategory: (id: string) => mockGetByCategory(id),
   },

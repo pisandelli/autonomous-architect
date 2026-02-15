@@ -7,12 +7,12 @@ import type { ProductSummary } from '@types/product';
  * Follows { data, loading, error } shape.
  */
 export const useProductStore = defineStore('product', () => {
-  // 1. State (Standard Shape)
+  // State (Standard Shape)
   const data = ref<ProductSummary[]>([]);
   const loading = ref(false);
   const error = ref<Error | null>(null);
 
-  // 2. Actions
+  // Actions
   async function fetchByCategory(categoryId: string) {
     loading.value = true;
     error.value = null;
