@@ -11,8 +11,6 @@ export const ProductModule = {
    * @param categoryId - The category UUID.
    */
   async getByCategory(categoryId: string): Promise<ProductSummary[]> {
-    // 1. Use $fetch or useFetch (Nuxt Native)
-    // Note: In API modules, we prefer $fetch for simple async calls unless we need the reactive wrapper of useFetch.
     const response = await $fetch<ProductSummary[]>(`/api/products`, {
       method: 'GET',
       query: { category_id: categoryId },

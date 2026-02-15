@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  // 1. Component Strategy (Smart Prefixing)
+  // Component Strategy (Smart Prefixing)
   // Stops Nuxt from auto-prefixing based on directory structure (e.g. components/Layout/Box.vue -> <LayoutBox>)
   // Allows us to control explicit prefixes where needed (e.g. Shared Components vs Widgets).
   components: {
@@ -30,7 +30,7 @@ export default defineNuxtConfig({
     ],
   },
 
-  // 2. Strict Aliases
+  // Strict Aliases
   // Ensures standard imports across the project.
   alias: {
     '@': '~/',
@@ -39,12 +39,13 @@ export default defineNuxtConfig({
     '@types': '~/shared/types',
     '@utils': '~/shared/utils',
     '@api': '~/app/api',
+    '@stores': '~/app/stores',
   },
 
-  // 3. Global CSS (Reset + Defaults)
+  // Global CSS (Reset + Defaults)
   css: ['~/assets/styles/reset.styl', '~/assets/styles/defaults.styl'],
 
-  // 4. Vite Config (Stylus Abstracts)
+  // Vite Config (Stylus Abstracts)
   vite: {
     css: {
       preprocessorOptions: {
@@ -61,7 +62,7 @@ export default defineNuxtConfig({
     },
   },
 
-  // 5. App Head Defaults
+  // App Head Defaults
   app: {
     head: {
       htmlAttrs: {
@@ -71,7 +72,7 @@ export default defineNuxtConfig({
     },
   },
 
-  // 6. Modules
+  // Modules
   modules: [
     '@nuxt/icon',
     '@nuxt/eslint',
@@ -84,7 +85,7 @@ export default defineNuxtConfig({
     '@nuxtjs/html-validator',
   ],
 
-  // 7. Module Configurations
+  // Module Configurations
   typescript: {
     strict: true,
     tsConfig: {

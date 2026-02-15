@@ -23,6 +23,7 @@ These rules are **ABSOLUTE** and override any other conflicting instructions.
 *   **NO Magic Numbers:** NEVER use hardcoded pixels/colors (e.g., `margin: 10px`). Use Tokens/Vars.
 *   **NO `px` for Layout:** Use `rem` for layout, `em` for components. `px` is ONLY for borders/shadows/canvas.
 *   **NO `margin` on Components:** Components must be layout-agnostic (Self-contained).
+*   **NO Ad-Hoc Layouts:** NEVER use `display: flex/grid` for macro-layout. ALWAYS use `<Stack>`, `<Cluster>`, `<Grid>`.
 *   **NO `width/height` Constraints:** Use `min-width`, `max-width`, `min-height`. NEVER fixed `width/height`.
 *   **NO "God Components":** Split any file > 300 lines. Default to Atomic Design.
 *   **NO "Teaching Comments":** JSDoc (`/** ... */`) describing "What/Why" is MANDATORY. Numbered tutorials (`// 1. Step one`) are FORBIDDEN.
@@ -65,6 +66,16 @@ These rules are **ABSOLUTE** and override any other conflicting instructions.
     *   **Attributes:** ALL visual variants (boolean flags) MUST be handled via `$attrs` + `processedAttrs`.
     *   *Mechanism:* `<base-btn primary>` -> `data-primary` attribute. CSS: `&[data-primary]`.
 *   **Wrappers:** Use functional wrappers (`stack`, `cluster`, `grid`) for positioning ($attrs only).
+*   **Layout Customization:**
+    *   **Defaults:** Respect the component's default values (e.g., 1rem gap).
+    *   **Overrides:** To change values, override the specific CSS variable in the parent's Local Scope.
+    *   *Example:* `.list { --stack-gap: 2rem }` (overrides default). NEVER usage of `<Stack gap="2rem">`.
+*   **Layout First:** Begin every component template with a Layout primitive. Avoid `<div>` soup.
+    *   `<Stack>`: Vertical rhythm.
+    *   `<Cluster>`: Horizontal alignment/wrapping.
+    *   `<Grid>`: 2D layouts.
+    *   `<Center>`: Centering content.
+    *   `<Box>`: Container styling (padding/border).
 
 ## 🏗️ 7. Layout Composition (The "Every Layout" Method)
 *   **Gap:** ALWAYS use `gap` instead of `margin` for spacing siblings.
